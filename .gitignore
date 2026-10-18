@@ -1,0 +1,16 @@
+node_modules/
+**/node_modules/
+frontend/dist/
+frontend/build/
+angular-module/dist/
+angular-module/.angular/
+backend/node_modules/
+backend/.env
+frontend/.env
+angular-module/src/environments/*.local.ts
+*.log
+npm-debug.log*
+.DS_Store
+.tmp/
+.vite/
+coverage/
