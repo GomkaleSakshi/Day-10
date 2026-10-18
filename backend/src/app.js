@@ -1,13 +1,22 @@
+
 import express from 'express';
 import cors from 'cors';
 import apiRoutes from './routes/index.js';
 import { config } from './config/env.js';
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
 
-const { FRONTEND_URL, ANGULAR_URL } = config;
+const { ANGULAR_URL } = config;
 
 const app = express();
-const allowedOrigins = [FRONTEND_URL, ANGULAR_URL, 'http://localhost:5173', 'http://localhost:4200'];
+
+const FRONTEND_URL = 'https://day-10-frontend.onrender.com';
+
+const allowedOrigins = [
+  FRONTEND_URL,
+  ANGULAR_URL,
+  'http://localhost:5173',
+  'http://localhost:4200',
+].filter(Boolean);
 
 app.use(
   cors({
@@ -30,6 +39,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', apiRoutes);
+
 app.use(notFoundHandler);
 app.use(errorHandler);
 
